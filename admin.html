@@ -1,0 +1,10 @@
+<div ng-controller="AdminController">
+  <ul>
+    <li ng-repeat="experience in experiences">{{ experience }}</li>
+  </ul>
+  
+  <form ng-submit="addExperience(experience)">
+    <input type="text" ng-model="experience" />
+    <input type="submit" value="Add experience"/>
+  </form>
+</div>

@@ -1,7 +1,14 @@
-var app = angular.module("gShe", ["firebase"]);
+var app = angular.module('gShe', ['ngRoute', 'firebase']);
 
-app.controller("ExperienceController", function($scope, $firebase) {
-  var ref = new Firebase("https://g-she.firebaseio.com/experiences/");
+app.config(['$routeProvider', function($routeProvider){
+  $routeProvider.when('/admin', {
+    templateUrl: 'admin.html',
+    controller: 'AdminController'
+  });
+}]);
+
+app.controller('ExperienceController', function($scope, $firebase) {
+  var ref = new Firebase('https://g-she.firebaseio.com/experiences/');
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();
@@ -24,8 +31,8 @@ app.controller("ExperienceController", function($scope, $firebase) {
   };
 });
 
-app.controller("PairController", function($scope, $firebase) {
-  var ref = new Firebase("https://g-she.firebaseio.com/pairs/");
+app.controller('PairController', function($scope, $firebase) {
+  var ref = new Firebase('https://g-she.firebaseio.com/pairs/');
   var sync = $firebase(ref);
 
   function pairExists(experience1, experience2) {
@@ -33,8 +40,8 @@ app.controller("PairController", function($scope, $firebase) {
   };
 });
 
-app.controller("AdminController", function($scope, $firebase) {
-  var ref = new Firebase("https://g-she.firebaseio.com/experiences/");
+app.controller('AdminController', function($scope, $firebase) {
+  var ref = new Firebase('https://g-she.firebaseio.com/experiences/');
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();
@@ -45,8 +52,8 @@ app.controller("AdminController", function($scope, $firebase) {
 });
 
 var settings = {
-  // tau : "Reasonable choices are between 0.3 and 1.2, though the system should
-  //      be tested to decide which value results in greatest predictive accuracy."
+  // tau : 'Reasonable choices are between 0.3 and 1.2, though the system should
+  //      be tested to decide which value results in greatest predictive accuracy.'
   tau : 0.5,
   // rating : default rating
   rating : 1500,
@@ -71,6 +78,6 @@ matches.push([Ryan, John, 0]); //Ryan lost against John
 matches.push([Ryan, Mary, 0.5]); //A draw between Ryan and Mary
 ranking.updateRatings(matches);
 
-console.log("Ryan new rating: " + Ryan.getRating());
-console.log("Ryan new rating deviation: " + Ryan.getRd());
-console.log("Ryan new volatility: " + Ryan.getVol());
+console.log('Ryan new rating: ' + Ryan.getRating());
+console.log('Ryan new rating deviation: ' + Ryan.getRd());
+console.log('Ryan new volatility: ' + Ryan.getVol());
