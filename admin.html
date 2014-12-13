@@ -1,10 +1,39 @@
 <div ng-controller="AdminController">
-  <ul>
-    <li ng-repeat="experience in experiences">{{ experience }}</li>
-  </ul>
-  
-  <form ng-submit="addExperience(experience)">
-    <input type="text" ng-model="experience" />
-    <input type="submit" value="Add experience"/>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Display</th>
+        <th>Rating</th>
+        <th>Rating Deviation</th>
+        <th>Volatility</th>
+        <th>Archived</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="experience in experiences">
+        <td>{{ experience.$id }}</td>
+        <td>{{ experience.display }}</td>
+        <td>{{ experience.rating }}</td>
+        <td>{{ experience.rd }}</td>
+        <td>{{ experience.vol }}</td>
+        <td>{{ experience.archived }}</td>
+        <td>
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeExperience(experience)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form class="form-inline" role="form" ng-submit="addExperience(experience)">
+    <div class="form-group">
+      <label class="sr-only" for="experience">Experience</label>
+      <input type="text" class="form-control" placeholder="Experience" ng-model="experience" />
+    </div>
+    
+    <input type="submit" class="btn btn-success" value="Add experience"/>
   </form>
 </div>

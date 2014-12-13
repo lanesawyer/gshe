@@ -1,0 +1,32 @@
+<div ng-controller="ExperienceController">
+  Eligible experiences: {{ eligibleExperiences }}
+
+  <div ng-hide="allExperiencesAnswered()">
+    <h2>Have you ever...</h2>
+    <div class="row" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
+      <div class="col-md-12 well">
+        {{ experience.display }}
+        <button type="button" class="btn btn-lg btn-success" ng-click="hadExperience(experience)">Yes</button>
+        <button type="button" class="btn btn-lg btn-danger" ng-click="nextExperience()">No</button>
+      </div>
+    </div>
+  </div>
+  <div ng-show="allExperiencesAnswered">
+    <div ng-repeat="experiencePair in experiencePairs">
+      {{ experiencePair.experience1.display }} / {{ experiencePair.experience2.display }} : {{ experiencePair.winner }}
+    </div>
+
+    <h2>Would you rather...</h2>
+    <div class="row" ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
+      <div class="col-md-5 well" ng-click="nextExperiencePair(experiencePair, 1)">
+        {{ experiencePair.experience1.display }}
+      </div>
+      <div class="col-md-2">
+        Or
+      </div>
+      <div class="col-md-5 well" ng-click="nextExperiencePair(experiencePair, 0)">
+        {{ experiencePair.experience2.display }}
+      </div>
+    </div>
+  </div>
+</div>

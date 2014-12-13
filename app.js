@@ -1,56 +1,3 @@
-var app = angular.module('gShe', ['ngRoute', 'firebase']);
-
-app.config(['$routeProvider', function($routeProvider){
-  $routeProvider.when('/admin', {
-    templateUrl: 'admin.html',
-    controller: 'AdminController'
-  });
-}]);
-
-app.controller('ExperienceController', function($scope, $firebase) {
-  var ref = new Firebase('https://g-she.firebaseio.com/experiences/');
-  var sync = $firebase(ref);
-
-  $scope.experiences = sync.$asArray();
-
-  $scope.batch = [];
-  $scope.eligibleExperiences = [];
-  $scope.experienceCounter = 0;
-
-  $scope.hadExperience = function(experience) {
-    $scope.eligibleExperiences.push(experience);
-    $scope.nextExperience();
-  };
-
-  $scope.nextExperience = function() {
-    $scope.experienceCounter++;
-  };
-
-  $scope.allExperiencesAnswered = function() {
-    return $scope.experienceCounter == $scope.experiences.length;
-  };
-});
-
-app.controller('PairController', function($scope, $firebase) {
-  var ref = new Firebase('https://g-she.firebaseio.com/pairs/');
-  var sync = $firebase(ref);
-
-  function pairExists(experience1, experience2) {
-
-  };
-});
-
-app.controller('AdminController', function($scope, $firebase) {
-  var ref = new Firebase('https://g-she.firebaseio.com/experiences/');
-  var sync = $firebase(ref);
-
-  $scope.experiences = sync.$asArray();
-
-  $scope.addExperience = function(experience) {
-    $scope.experiences.$add({name: experience, value: experience});
-  };
-});
-
 var settings = {
   // tau : 'Reasonable choices are between 0.3 and 1.2, though the system should
   //      be tested to decide which value results in greatest predictive accuracy.'
@@ -81,3 +28,68 @@ ranking.updateRatings(matches);
 console.log('Ryan new rating: ' + Ryan.getRating());
 console.log('Ryan new rating deviation: ' + Ryan.getRd());
 console.log('Ryan new volatility: ' + Ryan.getVol());
+
+
+function ExperiencePair(experience1, experience2) {
+  this.experience1 = experience1;
+  this.experience2 = experience2;
+  this.winner = 0.5;
+};
+
+
+
+var app = angular.module('gShe', ['ngRoute', 'firebase']);
+
+app.config(['$routeProvider', function($routeProvider){
+  $routeProvider.when('/admin', {
+    templateUrl: 'admin.html',
+    controller: 'AdminController'
+  }).otherwise({
+    templateUrl: 'experiences.html',
+    controller: 'ExperienceController'
+  });
+}]);
+
+app.controller('ExperienceController', function($scope, $firebase) {
+  var ref = new Firebase('https://g-she.firebaseio.com/experiences/');
+  var sync = $firebase(ref);
+
+  $scope.experiences = sync.$asArray();
+
+  $scope.batch = [];
+  $scope.eligibleExperiences = [];
+  $scope.experienceCounter = 0;
+
+  $scope.experiencePairs = [];
+  $scope.experiencePairCounter = 0;
+
+  $scope.hadExperience = function(experience) {
+    $scope.eligibleExperiences.push(experience);
+    $scope.nextExperience();
+  };
+
+  $scope.nextExperience = function() {
+    $scope.experienceCounter++;
+    if($scope.experienceCounter == $scope.experiences.length) {
+      $scope.allExperiencesAnswered = true;
+      $scope.experiencePairs = createExperiencePairs();
+    }
+  };
+
+  $scope.nextExperiencePair = function(experiencePair, winner) {
+    experiencePair.winner = winner;
+    $scope.experiencePairCounter++;
+  };
+
+  function createExperiencePairs() {
+    var experiencePairs = [];
+    
+    for(var i = 0; i < $scope.eligibleExperiences.length; i++) {
+      for(var j = i + 1; j < $scope.eligibleExperiences.length; j++) {
+        experiencePairs.push(new ExperiencePair($scope.eligibleExperiences[i], $scope.eligibleExperiences[j]));
+      }
+    }
+
+    return experiencePairs;
+  };
+});
