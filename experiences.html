@@ -1,7 +1,6 @@
 <div ng-controller="ExperienceController">
-  Eligible experiences: {{ eligibleExperiences }}
 
-  <div ng-hide="allExperiencesAnswered()">
+  <div ng-hide="allExperiencesAnswered">
     <h2>Have you ever...</h2>
     <div class="row" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
       <div class="col-md-12 well">
@@ -11,9 +10,10 @@
       </div>
     </div>
   </div>
+
   <div ng-show="allExperiencesAnswered">
     <div ng-repeat="experiencePair in experiencePairs">
-      {{ experiencePair.experience1.display }} / {{ experiencePair.experience2.display }} : {{ experiencePair.winner }}
+      {{ experiencePair.experience1.display }} ({{ experiencePair.experience1.rating }}) / {{ experiencePair.experience2.display }} ({{ experiencePair.experience2.rating }}): {{ experiencePair.winner }} 
     </div>
 
     <h2>Would you rather...</h2>
