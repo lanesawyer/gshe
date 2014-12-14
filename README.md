@@ -7,7 +7,7 @@ For development purposes, we use a very simple Node.js server.
 
 Just navigate to the project directory and run the command:
 
-'node server.js'
+`node server.js`
 
 ## Deploying to Firebase ##
 
