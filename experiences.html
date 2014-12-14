@@ -1,4 +1,4 @@
-<div ng-controller="ExperienceController">
+<div layout-margin ng-controller="ExperienceController">
 
   <div ng-hide="allExperiencesAnswered">
     <div ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
@@ -27,15 +27,15 @@
         </div>
       </md-toolbar>
       <md-content layout="row" layout-sm="column" flex ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
-        <md-card flex="40" flex-sm ng-click="nextExperiencePair(experiencePair, 1)">
-          {{ experiencePair.experience1.display }}
-        </md-card>
+        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 1)">
+          <span>{{ experiencePair.experience1.display }}</span>
+        </md-whiteframe>
         <div flex="20" flex-sm>
-          Or
+          <span>Or</span>
         </div>
-        <md-card flex="40" flex-sm ng-click="nextExperiencePair(experiencePair, 0)">
-          {{ experiencePair.experience2.display }}
-        </md-card>
+        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 0)">
+          <span>{{ experiencePair.experience2.display }}</span>
+        </md-whiteframe>
       </md-content>
     </div>
   </div>
