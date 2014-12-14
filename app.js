@@ -13,7 +13,7 @@ var settings = {
 
 var ranking = new glicko2.Glicko2(settings);
 
-var app = angular.module('gShe', ['ngRoute', 'firebase']);
+var app = angular.module('gShe', ['ngRoute', 'ngMaterial', 'firebase']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/admin', {

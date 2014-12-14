@@ -1,0 +1,9 @@
+{
+  "firebase": "g-she",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

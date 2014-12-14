@@ -1,13 +1,17 @@
 <div ng-controller="ExperienceController">
 
   <div ng-hide="allExperiencesAnswered">
-    <h2>Have you ever...</h2>
-    <div class="row" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
-      <div class="col-md-12 well">
+    <div ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <span class="md-flex">Have you ever...</span>
+        </div>
+      </md-toolbar>
+      <md-content class="md-padding" layout="column">
         {{ experience.display }}
-        <button type="button" class="btn btn-lg btn-success" ng-click="hadExperience(experience)">Yes</button>
-        <button type="button" class="btn btn-lg btn-danger" ng-click="nextExperience()">No</button>
-      </div>
+        <md-button class="md-primary" ng-click="hadExperience(experience)">Yes</md-button>
+        <md-button ng-click="nextExperience()">No</md-button>
+      </md-content>
     </div>
   </div>
 
@@ -16,17 +20,23 @@
       {{ experiencePair.experience1.display }} ({{ experiencePair.experience1.rating }}) / {{ experiencePair.experience2.display }} ({{ experiencePair.experience2.rating }}): {{ experiencePair.winner }} 
     </div>
 
-    <h2>Would you rather...</h2>
-    <div class="row" ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
-      <div class="col-md-5 well" ng-click="nextExperiencePair(experiencePair, 1)">
-        {{ experiencePair.experience1.display }}
-      </div>
-      <div class="col-md-2">
-        Or
-      </div>
-      <div class="col-md-5 well" ng-click="nextExperiencePair(experiencePair, 0)">
-        {{ experiencePair.experience2.display }}
-      </div>
+    <div layout="column">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <span class="md-flex">Would you rather...</span>
+        </div>
+      </md-toolbar>
+      <md-content layout="row" layout-sm="column" flex ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
+        <md-card flex="40" flex-sm ng-click="nextExperiencePair(experiencePair, 1)">
+          {{ experiencePair.experience1.display }}
+        </md-card>
+        <div flex="20" flex-sm>
+          Or
+        </div>
+        <md-card flex="40" flex-sm ng-click="nextExperiencePair(experiencePair, 0)">
+          {{ experiencePair.experience2.display }}
+        </md-card>
+      </md-content>
     </div>
   </div>
 </div>
