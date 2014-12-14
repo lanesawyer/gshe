@@ -19,6 +19,9 @@ app.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/admin', {
     templateUrl: 'admin.html',
     controller: 'AdminController'
+  }).when('/stackrank', {
+    templateUrl: 'stackrank.html',
+    controller: 'StackrankController'
   }).otherwise({
     templateUrl: 'experiences.html',
     controller: 'ExperienceController'
