@@ -17,13 +17,13 @@ var app = angular.module('gShe', ['ngRoute', 'ngMaterial', 'firebase']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/admin', {
-    templateUrl: 'admin.html',
+    templateUrl: 'admin/admin.html',
     controller: 'AdminController'
   }).when('/stackrank', {
-    templateUrl: 'stackrank.html',
+    templateUrl: 'stackrank/stackrank.html',
     controller: 'StackrankController'
   }).otherwise({
-    templateUrl: 'experiences.html',
+    templateUrl: 'experience/experiences.html',
     controller: 'ExperienceController'
   });
 }]);
