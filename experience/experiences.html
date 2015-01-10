@@ -1,14 +1,14 @@
 <div layout-margin ng-controller="ExperienceController">
 
   <div ng-hide="allExperiencesAnswered">
-    <div ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
+    <div class="experience" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
       <md-toolbar>
         <div class="md-toolbar-tools">
           <span class="md-flex">Have you ever...</span>
         </div>
       </md-toolbar>
       <md-content class="md-padding" layout="column">
-        {{ experience.display }}
+        <h1>{{ experience.display }}</h1>
         <md-button class="md-primary" ng-click="hadExperience(experience)">Yes</md-button>
         <md-button ng-click="nextExperience()">No</md-button>
       </md-content>
@@ -16,7 +16,7 @@
   </div>
 
   <div ng-show="allExperiencesAnswered">
-    <div layout="column">
+    <div class="experience-vote" layout="column">
       <md-toolbar>
         <div class="md-toolbar-tools">
           <span class="md-flex">Would you rather...</span>
