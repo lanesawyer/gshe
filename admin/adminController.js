@@ -19,8 +19,7 @@ app.controller('AdminController', function($scope, $firebase) {
     $scope.experience = '';
   };
 
-  $scope.removeExperience = function(experience) {
-    experience.archived = true;
+  $scope.saveExperience = function(experience) {
     $scope.experiences.$save(experience);
   };
 });
