@@ -1,4 +1,4 @@
-# g-she #
+# GSHE #
 
 The Ginormous Stackrank of Human Experience
 

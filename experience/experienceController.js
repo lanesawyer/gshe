@@ -5,7 +5,7 @@ function ExperiencePair(experience1, experience2) {
 };
 
 app.controller('ExperienceController', function($scope, $firebase) {
-  var ref = new Firebase('https://g-she.firebaseio.com/experiences/');
+  var ref = new Firebase('https://gshe.firebaseio.com/experiences/');
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();
