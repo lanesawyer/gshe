@@ -8,11 +8,15 @@ app.controller('AdminController', function($scope, $firebase) {
     var newExperience = ranking.makePlayer();
 
     $scope.experiences.$add({
-      createdAt: Firebase.ServerValue.TIMESTAMP,
       display: experience,
       rating: newExperience.getRating(),
       rd: newExperience.getRd(),
       vol: newExperience.getVol(),
+      timesExperienced: 0,
+      timesNotExperienced: 0,
+      timesWon: 0,
+      timesLost: 0,
+      createdAt: Firebase.ServerValue.TIMESTAMP,
       archived: false
     });
 

@@ -8,6 +8,10 @@
         <th>Rating</th>
         <th>Rating Deviation</th>
         <th>Volatility</th>
+        <th>Times Experienced</th>
+        <th>Times Not Experienced</th>
+        <th>Won</th>
+        <th>Lost</th>
         <th>Archived</th>
         <th>Created At</th>
       </tr>
@@ -21,6 +25,10 @@
         <td>{{ experience.rating }}</td>
         <td>{{ experience.rd }}</td>
         <td>{{ experience.vol }}</td>
+        <td>{{ experience.timesExperienced }}</td>
+        <td>{{ experience.timesNotExperienced }}</td>
+        <td>{{ experience.timesWon }}</td>
+        <td>{{ experience.timesLost }}</td>
         <td>
           <md-checkbox ng-model="experience.archived" ng-change="saveExperience(experience)"></md-checkbox>
         </td>

@@ -4,13 +4,13 @@
     <div class="experience" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
       <md-toolbar>
         <div class="md-toolbar-tools">
-          <span class="md-flex">Have you ever...</span>
+          <span class="md-flex">Have you experienced...</span>
         </div>
       </md-toolbar>
       <md-content class="md-padding" layout="column">
         <h1>{{ experience.display }}</h1>
         <md-button class="md-primary" ng-click="hadExperience(experience)">Yes</md-button>
-        <md-button ng-click="nextExperience()">No</md-button>
+        <md-button ng-click="notHadExperience(experience)">No</md-button>
       </md-content>
     </div>
   </div>
@@ -19,7 +19,7 @@
     <div class="experience-vote" layout="column">
       <md-toolbar>
         <div class="md-toolbar-tools">
-          <span class="md-flex">Would you rather...</span>
+          <span class="md-flex">Which experience do you prefer?</span>
         </div>
       </md-toolbar>
       <md-content layout="row" layout-sm="column" flex ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">

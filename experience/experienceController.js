@@ -20,7 +20,14 @@ app.controller('ExperienceController', function($scope, $firebase) {
   $scope.experiencePlayerSet = {};
 
   $scope.hadExperience = function(experience) {
+    experience.timesExperienced++;
     $scope.eligibleExperiences.push(experience);
+    $scope.nextExperience();
+  };
+
+  $scope.notHadExperience = function(experience) {
+    experience.timesNotExperienced++;
+    $scope.experiences.$save(experience);
     $scope.nextExperience();
   };
 
@@ -34,6 +41,12 @@ app.controller('ExperienceController', function($scope, $firebase) {
 
   $scope.nextExperiencePair = function(experiencePair, winner) {
     experiencePair.winner = winner;
+
+    if(winner == 0) {
+      experiencePair.experience1.timesWon++;
+    } else {
+      experiencePair.experience2.timesWon++;
+    }
 
     var experience1 = createPlayerFromExperience(experiencePair.experience1);
     var experience2 = createPlayerFromExperience(experiencePair.experience2);
