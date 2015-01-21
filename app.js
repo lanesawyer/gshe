@@ -19,6 +19,9 @@ app.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/admin', {
     templateUrl: 'admin/admin.html',
     controller: 'AdminController'
+  }).when('/userProfile', {
+    templateUrl: 'user/userProfile.html',
+    controller: 'UserController'
   }).when('/stackrank', {
     templateUrl: 'stackrank/stackrank.html',
     controller: 'StackrankController'
