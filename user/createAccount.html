@@ -1,28 +1,26 @@
 <div layout-margin ng-controller="UserController">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <span class="md-flex">Login</span>
+      <span class="md-flex">Create Account</span>
     </div>
   </md-toolbar>
   <md-content class="md-padding" layout="column">
     <form name="loginForm">
       <md-input-container>
         <label>Email</label>
-        <input md-maxlength="30" required name="email" ng-model="user.email">
+        <input required name="email" ng-model="user.email" />
         <div ng-messages="projectForm.description.$error">
           <div ng-message="required">This is required.</div>
-          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
         </div>
       </md-input-container>
       <md-input-container>
         <label>Password</label>
-        <input type="password" md-maxlength="30" required name="password" ng-model="user.password">
+        <input type="password" required name="password" ng-model="user.password" />
         <div ng-messages="projectForm.description.$error">
           <div ng-message="required">This is required.</div>
-          <div ng-message="md-maxlength">The name has to be less than 30 characters long.</div>
         </div>
       </md-input-container>
-      <md-button class="md-raised md-primary">Login</md-button>
+      <md-button class="md-raised md-primary" ng-click="createAccount()">Create Account</md-button>
     </form>
   </md-content>
 </div>

@@ -13,7 +13,7 @@ var settings = {
 
 var ranking = new glicko2.Glicko2(settings);
 
-var app = angular.module('gShe', ['ngRoute', 'ngMaterial', 'firebase']);
+var app = angular.module('gShe', ['ngRoute', 'ngMessages', 'ngMaterial', 'firebase']);
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/admin', {
@@ -23,7 +23,10 @@ app.config(['$routeProvider', function($routeProvider){
     templateUrl: 'user/userProfile.html',
     controller: 'UserController'
   }).when('/login', {
-    templateUrl: 'login.html',
+    templateUrl: 'user/login.html',
+    controller: 'UserController'
+  }).when('/createAccount', {
+    templateUrl: 'user/createAccount.html',
     controller: 'UserController'
   }).when('/stackrank', {
     templateUrl: 'stackrank/stackrank.html',

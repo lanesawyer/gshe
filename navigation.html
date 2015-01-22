@@ -4,7 +4,17 @@
     <a href="#">Home</a>
     <a href="#/stackrank">Stackrank</a>
     <a href="#/admin">Admin</a>
+
     <span flex></span>
-    <a href="#/login">Login</span>
+
+    <div ng-controller="UserController" ng-show="!isAuthenticated()">
+      <md-button ng-href="#/createAccount" class="md-accent">Sign Up</md-button>
+      <md-button ng-href="#/login">Sign In</md-button>
+    </div>
+
+    <div ng-controller="UserController" ng-show="isAuthenticated()">
+      <md-button ng-href="#/userProfile" class="md-accent">Profile</md-button>
+      <md-button ng-click="logout()">Sign Out</md-button>
+    </div>
   </h2>
 </md-toolbar>

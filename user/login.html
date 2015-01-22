@@ -1,0 +1,26 @@
+<div layout-margin layout="column" ng-controller="UserController">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span class="md-flex">Sign In</span>
+    </div>
+  </md-toolbar>
+  <md-content class="md-padding">
+    <form name="loginForm">
+      <md-input-container>
+        <label>Email</label>
+        <input required name="email" ng-model="user.email" />
+        <div ng-messages="projectForm.email.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" required name="password" ng-model="user.password" />
+        <div ng-messages="projectForm.password.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="login()">Sign In</md-button>
+    </form>
+  </md-content>
+</div>

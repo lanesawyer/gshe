@@ -20,7 +20,9 @@
       <tr ng-repeat="experience in experiences">
         <td>{{ experience.$id }}</td>
         <td>
-          <md-input ng-model="experience.display" ng-change="saveExperience(experience)"></md-input>
+          <md-input-container>
+          <input ng-model="experience.display" ng-change="saveExperience(experience)" />
+        </md-input-container>
         </td>
         <td>{{ experience.rating }}</td>
         <td>{{ experience.rd }}</td>

@@ -9,3 +9,11 @@
 .experience-vote {
   max-width: 800px;
 }
+
+md-toolbar {
+  height: 60px;
+}
+
+.md-toolbar-tools > * {
+  padding: 0 8px;
+}
