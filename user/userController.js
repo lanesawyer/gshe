@@ -1,55 +1,19 @@
-app.controller('UserController', function($scope, $location, $firebase) {
+app.controller('UserController', function($scope, $location, $firebase, authService) {
   var ref = new Firebase('https://gshe.firebaseio.com/');
-  var userRef = new Firebase('https://gshe.firebaseio.com/users');
-
-  var newUser = false;
 
   $scope.login = function() {
-    ref.authWithPassword({
-        email: $scope.user.email,
-        password : $scope.user.password
-    }, accountLoginHandler);
+    authService.login($scope.user.email, $scope.user.password);
   };
 
   $scope.logout = function() {
-    ref.unauth();
-    $location.path('/');
+    authService.logout();
   };
 
   $scope.isAuthenticated = function() {
-    return ref.getAuth() ? true : false;
+    authService.isAuthenticated();
   };
 
   $scope.createAccount = function() {
-    ref.createUser({
-      email: $scope.user.email,
-      password : $scope.user.password
-    }, accountCreationHandler);
-  };
-
-  function accountLoginHandler(error, authData) {
-    if(error) {
-      console.log('Login Failed!', error);
-    } else {
-
-      if(newUser) {
-        var user = new User($scope.user);
-
-        ref.child('users').child(authData.uid).set(authData);
-      }
-
-      $location.path('/userProfile');
-      console.log('Authenticated successfully with payload:', authData);
-    }
-  };
-
-  function accountCreationHandler(error, authData) {
-    if(error) {
-      console.log('Account Creation Failed!', error);
-    } else {
-      newUser = true;
-      $scope.login();
-      console.log('Successfully created account.', authData);
-    }
+    authService.createAccount($scope.user.email, $scope.user.password);
   };
 });
