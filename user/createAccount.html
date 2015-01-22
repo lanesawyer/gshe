@@ -7,6 +7,20 @@
   <md-content class="md-padding" layout="column">
     <form name="loginForm">
       <md-input-container>
+        <label>First Name</label>
+        <input required name="firstName" ng-model="user.firstName" />
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Last Name</label>
+        <input required name="lastName" ng-model="user.lastName" />
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
         <label>Email</label>
         <input required name="email" ng-model="user.email" />
         <div ng-messages="projectForm.description.$error">
@@ -16,6 +30,13 @@
       <md-input-container>
         <label>Password</label>
         <input type="password" required name="password" ng-model="user.password" />
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Retype Password</label>
+        <input type="password" required name="retypedPassword" ng-model="user.retypedPassword" />
         <div ng-messages="projectForm.description.$error">
           <div ng-message="required">This is required.</div>
         </div>
