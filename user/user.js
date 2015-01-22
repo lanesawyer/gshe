@@ -3,3 +3,7 @@ function User(user) {
   this.lastName = user.lastName;
   this.email = user.email;
 };
+
+User.prototype.addAuthData = function(authData) {
+  
+};
