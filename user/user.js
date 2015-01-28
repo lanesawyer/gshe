@@ -1,9 +1,9 @@
-function User(user) {
+function User(user, authData) {
   this.firstName = user.firstName;
   this.lastName = user.lastName;
-  this.email = user.email;
+  this.authData = authData;
 };
 
-User.prototype.addAuthData = function(authData) {
-  
+User.prototype.fullName = function() {
+  return this.firstName + ' ' + this.lastName;
 };
