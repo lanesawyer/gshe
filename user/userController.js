@@ -1,5 +1,5 @@
-app.controller('UserController', function($scope, $location, $firebase, authService) {
-  var ref = new Firebase('https://gshe.firebaseio.com/');
+app.controller('UserController', function($scope, $location, $firebase, config, authService) {
+  var ref = new Firebase(config.firebase_url);
 
   $scope.login = function() {
     authService.login($scope.user.email, $scope.user.password);

@@ -4,8 +4,8 @@ function ExperiencePair(experience1, experience2) {
   this.winner = 0.5;
 };
 
-app.controller('ExperienceController', function($scope, $firebase) {
-  var ref = new Firebase('https://gshe.firebaseio.com/experiences/');
+app.controller('ExperienceController', function($scope, $firebase, config) {
+  var ref = new Firebase(config.firebase_url + '/experiences/');
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();

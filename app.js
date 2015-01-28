@@ -36,3 +36,8 @@ app.config(['$routeProvider', function($routeProvider){
     controller: 'ExperienceController'
   });
 }]);
+
+app.constant('config', {
+  'firebase_url': 'https://gshe.firebaseio.com',
+  'version': 0.1
+});

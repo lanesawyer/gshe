@@ -1,7 +1,7 @@
-app.factory('authService', function($location) {
+app.factory('authService', function($location, config) {
   var authService = {};
   
-  var ref = new Firebase('https://gshe.firebaseio.com/');
+  var ref = new Firebase(config.firebase_url);
   var newUser = false;
 
   authService.login = function(email, password) {

@@ -1,5 +1,5 @@
-app.controller('AdminController', function($scope, $firebase) {
-  var ref = new Firebase('https://gshe.firebaseio.com/experiences/');
+app.controller('AdminController', function($scope, $firebase, config) {
+  var ref = new Firebase(config.firebase_url + '/experiences/');
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();
