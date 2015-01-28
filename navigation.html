@@ -7,14 +7,16 @@
 
     <span flex></span>
 
-    <div ng-controller="UserController" ng-show="!isAuthenticated()">
-      <md-button ng-href="#/createAccount" class="md-accent">Sign Up</md-button>
-      <md-button ng-href="#/login">Sign In</md-button>
-    </div>
+    <div ng-controller="UserController">
+      <div ng-show="!isAuthenticated()">
+        <md-button ng-href="#/createAccount" class="md-accent">Sign Up</md-button>
+        <md-button ng-href="#/login">Sign In</md-button>
+      </div>
 
-    <div ng-controller="UserController" ng-show="isAuthenticated()">
-      <md-button ng-href="#/userProfile" class="md-accent">Profile</md-button>
-      <md-button ng-click="logout()">Sign Out</md-button>
+      <div ng-show="isAuthenticated()">
+        <md-button ng-href="#/userProfile" class="md-accent">Profile</md-button>
+        <md-button ng-click="logout()">Sign Out</md-button>
+      </div>
     </div>
   </h2>
 </md-toolbar>
