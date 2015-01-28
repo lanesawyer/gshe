@@ -13,7 +13,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     authService.isAuthenticated();
   };
 
-  $scope.createAccount = function() {
+  $scope.createAccount = function(form) {
     authService.createAccount($scope.user.email, $scope.user.password);
   };
 });

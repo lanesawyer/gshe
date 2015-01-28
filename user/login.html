@@ -8,7 +8,7 @@
     <form name="loginForm">
       <md-input-container>
         <label>Email</label>
-        <input required name="email" ng-model="user.email" />
+        <input type="email" required name="email" ng-model="user.email" />
         <div ng-messages="projectForm.email.$error">
           <div ng-message="required">This is required.</div>
         </div>
