@@ -19,6 +19,14 @@ app.factory('authService', function($location, config) {
     }, accountCreationHandler);
   };
 
+  authService.updateEmail = function(oldEmail, newEmail, password, updateEmailHandler) {
+    ref.changeEmail({
+      oldEmail : oldEmail,
+      newEmail : newEmail,
+      password : password
+    }, updateEmailHandler);
+  };
+
   authService.logout = function() {
     ref.unauth();
     $location.path('/');

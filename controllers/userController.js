@@ -44,4 +44,16 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
       $scope.login();
     }
   };
+
+  $scope.updateEmailAddress = function() {
+    authService.updateEmail($scope.user.email, $scope.user.newEmail, $scope.user.password, updateEmailHandler)
+  };
+
+  function updateEmailHandler(error) {
+    if(error) {
+      console.log('Email not changed!', error);
+    } else {
+      console.log('Email successfully changed!');
+    }
+  };
 });
