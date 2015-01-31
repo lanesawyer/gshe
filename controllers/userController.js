@@ -6,23 +6,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
   });
 
   $scope.login = function() {
-    authService.login($scope.user.email, $scope.user.password, accountLoginHandler);
-  };
-
-  function accountLoginHandler(error, authData) {
-    if(error) {
-      console.log('Login Failed!', error);
-    } else {
-      if($scope.user.firstName && $scope.user.lastName) {
-        $scope.user = new User($scope.user, authData);
-        ref.child('users').child(authData.uid).set($scope.user);
-      }
-
-      authService.currentUser($scope.user);
-
-      $location.path('/userProfile');
-      $scope.$apply();
-    }
+    authService.login($scope.user.email, $scope.user.password);
   };
 
   $scope.logout = function() {
@@ -34,15 +18,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
   };
 
   $scope.createAccount = function(form) {
-    authService.createAccount($scope.user.email, $scope.user.password, accountCreationHandler);
-  };
-
-  function accountCreationHandler(error) {
-    if(error) {
-      console.log('Account Creation Failed!', error);
-    } else {
-      $scope.login();
-    }
+    authService.createAccount($scope.user);
   };
 
   $scope.updateEmailAddress = function() {
