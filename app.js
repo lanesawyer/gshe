@@ -17,22 +17,22 @@ var app = angular.module('gShe', ['ngRoute', 'ngMessages', 'ngMaterial', 'fireba
 
 app.config(['$routeProvider', function($routeProvider){
   $routeProvider.when('/admin', {
-    templateUrl: 'admin/admin.html',
+    templateUrl: 'views/admin.html',
     controller: 'AdminController'
   }).when('/userProfile', {
-    templateUrl: 'user/userProfile.html',
+    templateUrl: 'views/userProfile.html',
     controller: 'UserController'
   }).when('/login', {
-    templateUrl: 'user/login.html',
+    templateUrl: 'views/login.html',
     controller: 'UserController'
   }).when('/createAccount', {
-    templateUrl: 'user/createAccount.html',
+    templateUrl: 'views/createAccount.html',
     controller: 'UserController'
   }).when('/stackrank', {
-    templateUrl: 'stackrank/stackrank.html',
+    templateUrl: 'views/stackrank.html',
     controller: 'StackrankController'
   }).otherwise({
-    templateUrl: 'experience/experiences.html',
+    templateUrl: 'views/experiences.html',
     controller: 'ExperienceController'
   });
 }]);
