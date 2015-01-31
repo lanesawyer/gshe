@@ -33,11 +33,15 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     }
   };
 
-  $scope.resetPassword = function() {
-    authService.resetPassword($scope.user.email, $scope.user.oldPassword, $scope.user.newPassword, resetPasswordHandler);
+  $scope.resetPassword = function(email) {
+    authService.resetPassword(email);
   };
 
-  function resetPasswordHandler(error) {
+  $scope.changePassword = function() {
+    authService.changePassword($scope.user.email, $scope.user.oldPassword, $scope.user.newPassword, changePasswordHandler);
+  };
+
+  function changePasswordHandler(error) {
     if(error) {
       console.log('Password not changed!', error);
     } else {

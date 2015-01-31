@@ -63,7 +63,17 @@ app.factory('authService', function($location, $firebaseAuth, config) {
     });
   };
 
-  authService.resetPassword = function(email, oldPassword, newPassword, resetPasswordHandler) {
+  authService.resetPassword = function(email) {
+    auth.$resetPassword({
+      email: email
+    }).then(function() {
+      console.log("Password reset email sent successfully!");
+    }).catch(function(error) {
+      console.error("Error: ", error);
+    });
+  };
+
+  authService.changePassword = function(email, oldPassword, newPassword, changePasswordHandler) {
     auth.$changePassword({
       email: email,
       oldPassword: oldPassword,
