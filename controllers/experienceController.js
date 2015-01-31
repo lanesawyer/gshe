@@ -4,7 +4,7 @@ function ExperiencePair(experience1, experience2) {
   this.winner = 0.5;
 };
 
-app.controller('ExperienceController', function($scope, $firebase, config) {
+app.controller('ExperienceController', function($scope, $firebase, glickoService, config) {
   var ref = new Firebase(config.firebase_url + '/experiences/');
   var sync = $firebase(ref);
 
@@ -44,8 +44,10 @@ app.controller('ExperienceController', function($scope, $firebase, config) {
 
     if(winner == 0) {
       experiencePair.experience1.timesWon++;
+      experiencePair.experience2.timesLost++;
     } else {
       experiencePair.experience2.timesWon++;
+      experiencePair.experience1.timesLost++;
     }
 
     var experience1 = createPlayerFromExperience(experiencePair.experience1);
@@ -55,7 +57,7 @@ app.controller('ExperienceController', function($scope, $firebase, config) {
 
     $scope.experiencePairCounter++;
     if($scope.experiencePairCounter == $scope.experiencePairs.length) {
-      ranking.updateRatings($scope.batch);
+      glickoService.updateRatings($scope.batch);
 
       updateExperiences();
     }
@@ -75,7 +77,7 @@ app.controller('ExperienceController', function($scope, $firebase, config) {
 
   function createPlayerFromExperience(experience) {
     if(!$scope.experiencePlayerSet[experience.$id]) {
-      $scope.experiencePlayerSet[experience.$id] = ranking.makePlayer(experience.rating, experience.rd, experience.vol);
+      $scope.experiencePlayerSet[experience.$id] = glickoService.createRatingExperience(experience);
     }
 
     return $scope.experiencePlayerSet[experience.$id];

@@ -23,13 +23,13 @@
         </div>
       </md-toolbar>
       <md-content layout="row" layout-sm="column" flex ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
-        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 1)">
+        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 0)">
           <span>{{ experiencePair.experience1.display }}</span>
         </md-whiteframe>
         <div flex="20" flex-sm>
           <span>Or</span>
         </div>
-        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 0)">
+        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 1)">
           <span>{{ experiencePair.experience2.display }}</span>
         </md-whiteframe>
       </md-content>
