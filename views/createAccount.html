@@ -8,21 +8,21 @@
     <form novalidate name="loginForm">
       <md-input-container>
         <label>First Name</label>
-        <input required name="firstName" ng-model="user.firstName" />
+        <input required name="firstName" ng-model="newUser.firstName" />
       </md-input-container>
       <md-input-container>
         <label>Last Name</label>
-        <input required name="lastName" ng-model="user.lastName" />
+        <input required name="lastName" ng-model="newUser.lastName" />
       </md-input-container>
       <md-input-container>
         <label>Email</label>
-        <input type="email" required name="email" ng-model="user.email" />
+        <input type="email" required name="email" ng-model="newUser.email" />
       </md-input-container>
       <md-input-container>
         <label>Password</label>
-        <input type="password" required name="password" ng-model="user.password" />
+        <input type="password" required name="password" ng-model="newUser.password" />
       </md-input-container>
-      <md-button class="md-raised md-primary" ng-disabled="loginForm.$invalid" ng-click="createAccount(form)">Create Account</md-button>
+      <md-button class="md-raised md-primary" ng-disabled="loginForm.$invalid" ng-click="createAccount(newUser)">Create Account</md-button>
     </form>
   </md-content>
 </div>

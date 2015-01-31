@@ -6,14 +6,18 @@ app.factory('authService', function($location, $firebaseAuth, config) {
 
   var currentUser;
 
-  authService.login = function(email, password) {
+  authService.isAuthenticated = function() {
+    return auth.$getAuth() ? true : false;
+  };
+
+  authService.login = function(loginUser) {
     auth.$authWithPassword({
-        email: email,
-        password: password
+        email: loginUser.email,
+        password: loginUser.password
     }).then(function(authData) {
 
-      ref.child('users/' + authData.uid).once('value', function(snapshot) {
-        currentUser = snapshot.val();
+      ref.child('users/' + authData.uid).once('value', function(userSnapshot) {
+        currentUser = userSnapshot.val();
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
@@ -24,17 +28,22 @@ app.factory('authService', function($location, $firebaseAuth, config) {
     });;
   };
 
-  authService.createAccount = function(user) {
+  authService.logout = function() {
+    auth.$unauth();
+    $location.path('/');
+  };
+
+  authService.createAccount = function(newUserInfo) {
     auth.$createUser({
-      email: user.email,
-      password: user.password
+      email: newUserInfo.email,
+      password: newUserInfo.password
     }).then(function(userData) {
       return auth.$authWithPassword({
-        email: user.email,
-        password: user.password
+        email: newUserInfo.email,
+        password: newUserInfo.password
       });
     }).then(function(authData) {
-      var newUser = new User(user, authData);
+      var newUser = new User(newUserInfo, authData);
       ref.child('users').child(authData.uid).set(newUser);
       $location.path('/userProfile');
     }).catch(function(error) {
@@ -64,15 +73,6 @@ app.factory('authService', function($location, $firebaseAuth, config) {
     }).catch(function(error) {
       console.error("Error: ", error);
     });
-  };
-
-  authService.logout = function() {
-    auth.$unauth();
-    $location.path('/');
-  };
-
-  authService.isAuthenticated = function() {
-    return auth.$getAuth() ? true : false;
   };
 
   authService.currentUser = function(user) {

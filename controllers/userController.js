@@ -5,20 +5,20 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     $scope.user = authService.currentUser();
   });
 
-  $scope.login = function() {
-    authService.login($scope.user.email, $scope.user.password);
+  $scope.isAuthenticated = function() {
+    return authService.isAuthenticated();
+  };
+
+  $scope.login = function(loginUser) {
+    authService.login(loginUser);
   };
 
   $scope.logout = function() {
     authService.logout();
   };
 
-  $scope.isAuthenticated = function() {
-    return authService.isAuthenticated();
-  };
-
-  $scope.createAccount = function(form) {
-    authService.createAccount($scope.user);
+  $scope.createAccount = function(newUser) {
+    authService.createAccount(newUser);
   };
 
   $scope.updateEmailAddress = function() {
