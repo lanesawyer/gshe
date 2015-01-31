@@ -56,4 +56,16 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
       console.log('Email successfully changed!');
     }
   };
+
+  $scope.resetPassword = function() {
+    authService.resetPassword($scope.user.email, $scope.user.oldPassword, $scope.user.newPassword, resetPasswordHandler);
+  };
+
+  function resetPasswordHandler(error) {
+    if(error) {
+      console.log('Password not changed!', error);
+    } else {
+      console.log('Password successfully changed!');
+    }
+  };
 });
