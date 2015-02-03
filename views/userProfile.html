@@ -1,51 +1,8 @@
 <div layout-margin layout="column" ng-controller="UserController">
   <h1>{{ user.fullName() }}</h1>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span class="md-flex">Update Email Address</span>
-    </div>
-  </md-toolbar>
-  <md-content class="md-padding">
-    <form name="updateEmailForm">
-      <md-input-container>
-        <label>New Email Address</label>
-        <input type="email" required name="newEmail" ng-model="user.newEmail" />
-        <div ng-messages="projectForm.newEmail.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
-      <md-input-container>
-        <label>Password</label>
-        <input type="password" required name="password" ng-model="user.password" />
-        <div ng-messages="projectForm.password.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="updateEmailAddress()">Update Email</md-button>
-    </form>
-  </md-content>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span class="md-flex">Update Password</span>
-    </div>
-  </md-toolbar>
-  <md-content class="md-padding">
-    <form name="resetPasswordForm">
-      <md-input-container>
-        <label>Old Password</label>
-        <input type="password" required name="oldPassword" ng-model="user.oldPassword" />
-        <div ng-messages="projectForm.oldPassword.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
-      <md-input-container>
-        <label>New Password</label>
-        <input type="password" required name="newPassword" ng-model="user.newPassword" />
-        <div ng-messages="projectForm.newPassword.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="resetPassword()">Reset Password</md-button>
-    </form>
-  </md-content>
+  <md-progress-linear md-theme="custom" md-mode="determinate" ng-value="80"></md-progress-linear>
+
+  <ng-include src="'views/partials/updateEmail.html'"></ng-include>
+  <ng-include src="'views/partials/updatePassword.html'"></ng-include>
+  
 </div>
