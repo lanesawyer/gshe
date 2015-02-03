@@ -1,6 +1,14 @@
 <div layout-margin layout="column" ng-controller="UserController">
   <h1>{{ user.fullName() }}</h1>
-  <md-progress-linear md-theme="custom" md-mode="determinate" ng-value="80"></md-progress-linear>
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span class="md-flex">User Profile</span>
+    </div>
+  </md-toolbar>
+  <md-content class="md-padding">
+    Put user stats here
+  </md-content>
 
   <ng-include src="'views/partials/updateEmail.html'"></ng-include>
   <ng-include src="'views/partials/updatePassword.html'"></ng-include>

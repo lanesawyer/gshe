@@ -2,7 +2,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
   var ref = new Firebase(config.firebase_url);
 
   $scope.$watch(authService.isAuthenticated, function () {
-    $scope.user = authService.currentUser();
+    $scope.user = authService.getCurrentUser();
   });
 
   $scope.isAuthenticated = function() {

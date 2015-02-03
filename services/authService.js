@@ -4,6 +4,7 @@ app.factory('authService', function($location, $firebaseAuth, config) {
   var ref = new Firebase(config.firebase_url);
   var auth = $firebaseAuth(ref);
 
+  var userId;
   var currentUser;
 
   authService.isAuthenticated = function() {
@@ -85,12 +86,8 @@ app.factory('authService', function($location, $firebaseAuth, config) {
     });
   };
 
-  authService.currentUser = function(user) {
-    if(user) {
-      currentUser = user;
-    } else {
-      return currentUser;
-    }
+  authService.getCurrentUser = function() {
+    return currentUser;
   };
 
   return authService;
