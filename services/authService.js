@@ -16,7 +16,6 @@ app.factory('authService', function($location, $firebaseAuth, config) {
         email: loginUser.email,
         password: loginUser.password
     }).then(function(authData) {
-
       ref.child('users/' + authData.uid).once('value', function(userSnapshot) {
         currentUser = userSnapshot.val();
       }, function (errorObject) {
