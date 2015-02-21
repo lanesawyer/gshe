@@ -1,13 +1,10 @@
 <div layout-margin layout="column" ng-controller="UserController">
   <h1>{{user.firstName}} {{user.lastName}}</h1>
 
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span class="md-flex">User Profile</span>
+  <div layout="row">
+    <div ng-repeat="userExperience in userExperiences">
+      {{userExperience}}
     </div>
-  </md-toolbar>
-  <md-content class="md-padding">
-    <form name="userProfileForm">
   </div>
 
   <div layout="row" layout-margin>

@@ -1,24 +1,14 @@
 app.controller('AdminController', function($scope, $firebase, glickoService, config) {
-  var ref = new Firebase(config.firebase_url + '/experiences/');
+  var ref = new Firebase(config.firebase_url + config.experiences_url);
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();
 
-  $scope.addExperience = function(experience) {
-    var newExperience = glickoService.createNewRatingExperience();
+  $scope.addExperience = function(experienceDisplay) {
+    var newRatingExperience = glickoService.createNewRatingExperience();
+    var newExperience = new Experience(experienceDisplay, newRatingExperience);
 
-    $scope.experiences.$add({
-      display: experience,
-      rating: newExperience.getRating(),
-      rd: newExperience.getRd(),
-      vol: newExperience.getVol(),
-      timesExperienced: 0,
-      timesNotExperienced: 0,
-      timesWon: 0,
-      timesLost: 0,
-      createdAt: Firebase.ServerValue.TIMESTAMP,
-      archived: false
-    });
+    $scope.experiences.$add(newExperience);
 
     $scope.experience = '';
   };

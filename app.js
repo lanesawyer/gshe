@@ -26,7 +26,8 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.constant('config', {
-  'firebase_url': 'https://gshe.firebaseio.com',
+  'firebase_url': 'https://gshe.firebaseio.com/',
+  'experiences_url' : 'experiences/',
   'glicko_settings': {
     // tau : 'Reasonable choices are between 0.3 and 1.2, though the system should
     //        be tested to decide which value results in greatest predictive accuracy.'
@@ -41,4 +42,3 @@ app.constant('config', {
   },
   'version': 0.1
 });
-

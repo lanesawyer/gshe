@@ -5,7 +5,7 @@ function ExperiencePair(experience1, experience2) {
 };
 
 app.controller('ExperienceController', function($scope, $firebase, glickoService, config) {
-  var ref = new Firebase(config.firebase_url + '/experiences/');
+  var ref = new Firebase(config.firebase_url + config.experiences_url);
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();

@@ -4,6 +4,10 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
   $scope.$watch(authService.getCurrentUser, function (currentUser) {
     if(currentUser) {
       $scope.user = new User(currentUser);
+
+      var userExperiences = new Firebase(config.firebase_url + 'user-experiences/' + $scope.user.authData.uid);
+      var sync = $firebase(userExperiences);
+      $scope.userExperiences = sync.$asArray();
     }
   });
 
@@ -57,7 +61,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
   };
 
   $scope.genderOptions = [
-  'Male', 'Female'
+    'Male', 'Female'
   ];
 
   $scope.ageOptions = [
