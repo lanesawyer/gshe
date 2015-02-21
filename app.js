@@ -1,6 +1,6 @@
 var app = angular.module('gShe', ['ngRoute', 'ngMessages', 'ngMaterial', 'firebase']);
 
-app.config(['$routeProvider', function($routeProvider){
+app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/admin', {
     templateUrl: 'views/admin.html',
     controller: 'AdminController'
