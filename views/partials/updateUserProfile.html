@@ -1,0 +1,55 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <span class="md-flex">User Profile</span>
+  </div>
+</md-toolbar>
+<md-content class="md-padding">
+  <form name="userProfileForm">
+    <md-input-container>
+      <label>First Name</label>
+      <input required name="firstName" ng-model="user.firstName" />
+      <div ng-messages="loginForm.email.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>Last Name</label>
+      <input required name="lastName" ng-model="user.lastName" />
+      <div ng-messages="loginForm.email.$error">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    Gender
+    <md-radio-group ng-model="user.gender">
+        <md-radio-button ng-repeat="age in genderOptions" ng-value="age" aria-label="{{ age }}">
+            {{ age }}
+        </md-radio-button>
+    </md-radio-group>
+    <br />
+    Age
+    <select ng-model="user.age">
+      <option ng-repeat="age in ageOptions" value="{{age}}">{{age}}</option>
+    </select>
+    <br />
+    Ethnicity
+    <select ng-model="user.ethnicity">
+      <option ng-repeat="ethnicity in ethnicityOptions" value="{{ethnicity}}">{{ethnicity}}</option>
+    </select>
+    <br />
+    Education
+    <select ng-model="user.education">
+      <option ng-repeat="education in eduationOptions" value="{{education}}">{{education}}</option>
+    </select>
+    <br />
+    Marital Status
+    <select ng-model="user.maritalStatus">
+      <option ng-repeat="maritalStatus in maritalStatusOptions" value="{{maritalStatus}}">{{maritalStatus}}</option>
+    </select>
+    <br />
+    Employment Status
+    <select ng-model="user.employmentStatus">
+      <option ng-repeat="employmentStatus in employmentStatusOptions" value="{{employmentStatus}}">{{employmentStatus}}</option>
+    </select>
+    <md-button class="md-raised md-primary" ng-click="updateProfile(user)">Update Profile</md-button>
+  </form>
+</md-content>
