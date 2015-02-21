@@ -9,7 +9,11 @@ app.factory('glickoService', function(config) {
 
   glickoService.createRatingExperience = function(experience) {
     return rating.makePlayer(experience.rating, experience.rd, experience.vol);
-  }
+  };
+
+  glickoService.createNewRatingExperience = function() {
+    return rating.makePlayer();
+  };
 
   return glickoService;
 });

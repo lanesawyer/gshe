@@ -1,11 +1,11 @@
-app.controller('AdminController', function($scope, $firebase, config) {
+app.controller('AdminController', function($scope, $firebase, glickoService, config) {
   var ref = new Firebase(config.firebase_url + '/experiences/');
   var sync = $firebase(ref);
 
   $scope.experiences = sync.$asArray();
 
   $scope.addExperience = function(experience) {
-    var newExperience = ranking.makePlayer();
+    var newExperience = glickoService.createNewRatingExperience();
 
     $scope.experiences.$add({
       display: experience,
