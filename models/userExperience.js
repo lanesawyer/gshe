@@ -4,5 +4,6 @@ function UserExperience(newRatingExperience) {
   this.vol = newRatingExperience.getVol(),
   this.timesWon = 0,
   this.timesLost = 0,
-  this.createdAt = Firebase.ServerValue.TIMESTAMP
+  this.createdAt = Firebase.ServerValue.TIMESTAMP,
+  this.archived = false
 }

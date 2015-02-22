@@ -57,7 +57,13 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
 
   $scope.updateProfile = function(user) {
     var ref = new Firebase(config.firebase_url);
-    ref.child('users/' + $scope.user.authData.uid).update(user);
+    ref.child('users/' + $scope.user.authData.uid).update(user, function(error){
+      if (error) {
+        console.log('Synchronization failed');
+      } else {
+        console.log('Synchronization succeeded');
+      }
+    });
   };
 
   $scope.genderOptions = [

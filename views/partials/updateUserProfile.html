@@ -26,30 +26,42 @@
         </md-radio-button>
     </md-radio-group>
     <br />
-    <label>Age</label>
-    <md-select ng-model="user.age" placeholder="Age">
-      <md-option ng-value="age" ng-repeat="age in ageOptions">{{ age }}</md-option>
-    </md-select>
-    <br />
-    <label>Ethnicity</label>
-    <md-select ng-model="user.ethnicity" placeholder="Ethnicity">
-      <md-option ng-value="ethnicity" ng-repeat="ethnicity in ethnicityOptions">{{ ethnicity }}</md-option>
-    </md-select>
-    <br />
-    <label>Education</label>
-    <md-select ng-model="user.education" placeholder="Education">
-      <md-option ng-value="education" ng-repeat="education in eduationOptions">{{ education }}</md-option>
-    </md-select>
-    <br />
-    <label>Marital Status</label>
-    <md-select ng-model="user.maritalStatus" placeholder="Marital Status">
-      <md-option ng-value="maritalStatus" ng-repeat="maritalStatus in maritalStatusOptions">{{ maritalStatus }}</md-option>
-    </md-select>
-    <br />
-    <label>Employment Status</label>
-    <md-select ng-model="user.employmentStatus" placeholder="Employment Status">
-      <md-option ng-value="employmentStatus" ng-repeat="employmentStatus in employmentStatusOptions">{{ employmentStatus }}</md-option>
-    </md-select>
+    <div layout="row">
+      <div flex>
+        <label>Age</label>
+        <md-select ng-model="user.age" placeholder="Age">
+          <md-option ng-value="age" ng-repeat="age in ageOptions">{{ age }}</md-option>
+        </md-select>
+      </div>
+      <div flex>
+        <label>Ethnicity</label>
+        <md-select ng-model="user.ethnicity" placeholder="Ethnicity">
+          <md-option ng-value="ethnicity" ng-repeat="ethnicity in ethnicityOptions">{{ ethnicity }}</md-option>
+        </md-select>
+      </div>
+    </div>
+    <div layout="row">
+      <div flex>
+        <label>Education</label>
+        <md-select ng-model="user.education" placeholder="Education">
+          <md-option ng-value="education" ng-repeat="education in eduationOptions">{{ education }}</md-option>
+        </md-select>
+      </div>
+      <div flex>
+        <label>Marital Status</label>
+        <md-select ng-model="user.maritalStatus" placeholder="Marital Status">
+          <md-option ng-value="maritalStatus" ng-repeat="maritalStatus in maritalStatusOptions">{{ maritalStatus }}</md-option>
+        </md-select>
+      </div>
+    </div>
+    <div layout="row">
+      <div flex>
+        <label>Employment Status</label>
+        <md-select ng-model="user.employmentStatus" placeholder="Employment Status">
+          <md-option ng-value="employmentStatus" ng-repeat="employmentStatus in employmentStatusOptions">{{ employmentStatus }}</md-option>
+        </md-select>
+      </div>
+    </div>
     <md-button class="md-raised md-primary" ng-click="updateProfile(user)">Update Profile</md-button>
   </form>
 </md-content>
