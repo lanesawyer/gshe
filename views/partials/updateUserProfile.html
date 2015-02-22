@@ -19,7 +19,7 @@
         <div ng-message="required">This is required.</div>
       </div>
     </md-input-container>
-    <div>Gender</div>
+    <label>Gender</label>
     <md-radio-group ng-model="user.gender">
         <md-radio-button ng-repeat="gender in genderOptions" ng-value="gender" aria-label="{{ gender }}">
             {{ gender }}

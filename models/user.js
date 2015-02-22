@@ -1,9 +1,3 @@
-function User(user, authData) {
-  this.firstName = user.firstName;
-  this.lastName = user.lastName;
-  this.authData = authData;
-};
-
 function User(user) {
   this.firstName = user.firstName;
   this.lastName = user.lastName;
@@ -13,8 +7,6 @@ function User(user) {
   this.education = user.education;
   this.maritalStatus = user.maritalStatus;
   this.employmentStatus = user.employmentStatus;
-
-  this.authData = user.authData;
 };
 
 User.prototype.fullName = function() {

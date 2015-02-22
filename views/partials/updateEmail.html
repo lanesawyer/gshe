@@ -7,18 +7,12 @@
   <form name="updateEmailForm">
     <md-input-container>
       <label>New Email Address</label>
-      <input type="email" required name="newEmail" ng-model="user.newEmail" />
-      <div ng-messages="projectForm.newEmail.$error">
-        <div ng-message="required">This is required.</div>
-      </div>
+      <input type="email" required name="newEmail" ng-model="newEmail" />
     </md-input-container>
     <md-input-container>
       <label>Password</label>
-      <input type="password" required name="password" ng-model="user.password" />
-      <div ng-messages="projectForm.password.$error">
-        <div ng-message="required">This is required.</div>
-      </div>
+      <input type="password" required name="password" ng-model="password" />
     </md-input-container>
-    <md-button class="md-raised md-primary" ng-click="updateEmailAddress()">Update Email</md-button>
+    <md-button class="md-raised md-primary" ng-click="updateEmailAddress(newEmail, password)">Update Email</md-button>
   </form>
 </md-content>

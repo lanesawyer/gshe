@@ -5,7 +5,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     if(currentUser) {
       $scope.user = new User(currentUser);
 
-      var userExperiences = new Firebase(config.firebase_url + 'user-experiences/' + $scope.user.authData.uid);
+      var userExperiences = new Firebase(config.firebase_url + 'user-experiences/' + authService.getAuth().uid);
       var sync = $firebase(userExperiences);
       $scope.userExperiences = sync.$asArray();
     }
@@ -27,8 +27,8 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     authService.createAccount(newUser);
   };
 
-  $scope.updateEmailAddress = function() {
-    authService.updateEmail($scope.user.email, $scope.user.newEmail, $scope.user.password, updateEmailHandler)
+  $scope.updateEmailAddress = function(newEmail, password) {
+    authService.updateEmail(authService.getAuth().password.email, newEmail, password, updateEmailHandler);
   };
 
   function updateEmailHandler(error) {
@@ -36,6 +36,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
       console.log('Email not changed!', error);
     } else {
       console.log('Email successfully changed!');
+
     }
   };
 
@@ -43,8 +44,8 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     authService.resetPassword(email);
   };
 
-  $scope.changePassword = function() {
-    authService.changePassword($scope.user.email, $scope.user.oldPassword, $scope.user.newPassword, changePasswordHandler);
+  $scope.changePassword = function(oldPassword, newPassword) {
+    authService.changePassword(authService.getAuth().password.email, oldPassword, newPassword, changePasswordHandler);
   };
 
   function changePasswordHandler(error) {
@@ -57,7 +58,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
 
   $scope.updateProfile = function(user) {
     var ref = new Firebase(config.firebase_url);
-    ref.child('users/' + $scope.user.authData.uid).update(user, function(error){
+    ref.child('users/' + authService.getAuth().uid).update(user, function(error){
       if (error) {
         console.log('Synchronization failed');
       } else {

@@ -1,4 +1,4 @@
-app.factory('authService', function($location, $firebaseAuth, config) {
+app.factory('authService', function($location, $route, $firebaseAuth, config) {
   var authService = {};
   
   var ref = new Firebase(config.firebase_url);
@@ -10,6 +10,7 @@ app.factory('authService', function($location, $firebaseAuth, config) {
   if(authData) {
     ref.child('users/' + authData.uid).once('value', function(userSnapshot) {
       currentUser = userSnapshot.val();
+      $route.reload();
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
@@ -17,6 +18,10 @@ app.factory('authService', function($location, $firebaseAuth, config) {
 
   authService.isAuthenticated = function() {
     return auth.$getAuth() ? true : false;
+  };
+
+  authService.getAuth = function() {
+    return auth.$getAuth();
   };
 
   authService.login = function(loginUser) {
@@ -50,8 +55,10 @@ app.factory('authService', function($location, $firebaseAuth, config) {
         password: newUserInfo.password
       });
     }).then(function(authData) {
-      var newUser = new User(newUserInfo, authData);
-      ref.child('users').child(authData.uid).set(newUser);
+      ref.child('users').child(authData.uid).set({
+        firstName: newUserInfo.firstName,
+        lastName: newUserInfo.lastName,
+      });
       $location.path('/userProfile');
     }).catch(function(error) {
       console.error("Error: ", error);
