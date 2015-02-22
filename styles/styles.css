@@ -14,6 +14,10 @@ md-toolbar {
   height: 60px;
 }
 
+md-checkbox {
+  margin: 0;
+}
+
 .md-toolbar-tools > * {
   padding: 0 8px;
 }
