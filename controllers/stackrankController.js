@@ -10,7 +10,7 @@ app.controller('StackrankController', function($scope, $firebase, config, authSe
 
     var newRatingExperience = glickoService.createNewRatingExperience();
 
-    var newUserExperience = new UserExperience(newRatingExperience);
+    var newUserExperience = new UserExperience(experience, newRatingExperience);
     userExperiences.child(experience.$id).set(newUserExperience);
   };
 

@@ -1,13 +1,21 @@
 <div layout-margin layout="column" ng-controller="UserController">
   <h1>{{user.firstName}} {{user.lastName}}</h1>
 
-  <div layout="row">
-    <div ng-repeat="userExperience in userExperiences">
-      {{userExperience}}
+  <div layout="row" layout-margin>
+    <div flex>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <span class="md-flex">Experiences</span>
+        </div>
+      </md-toolbar>
+      <md-content class="md-padding">
+        <div ng-repeat="userExperience in userExperiences | orderBy:'rating'">
+          {{userExperience.display}} | {{userExperience.rating}}
+        </div>
     </div>
   </div>
 
-  <div layout="row" layout-margin>
+  <div layout="row" layout-sm="column" layout-margin>
     <div flex>
       <ng-include src="'views/partials/updateUserProfile.html'"></ng-include>
     </div>
