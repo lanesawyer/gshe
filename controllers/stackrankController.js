@@ -5,7 +5,7 @@ app.controller('StackrankController', function($scope, $firebase, config, authSe
   $scope.stackrank = sync.$asArray();
 
   $scope.markAsExperienced = function(experience) {
-    var userId = authService.getCurrentUser().authData.uid;
+    var userId = authService.getAuth().uid;
     var userExperiences = new Firebase(config.firebase_url + 'user-experiences/' + userId);
 
     var newRatingExperience = glickoService.createNewRatingExperience();
