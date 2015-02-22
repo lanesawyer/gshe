@@ -4,8 +4,14 @@ app.factory('authService', function($location, $firebaseAuth, config) {
   var ref = new Firebase(config.firebase_url);
   var auth = $firebaseAuth(ref);
 
-  var userId;
-  var currentUser;
+  var authData = auth.$getAuth()
+  if(authData) {
+    ref.child('users/' + authData.uid).once('value', function(userSnapshot) {
+      currentUser = userSnapshot.val();
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  }
 
   authService.isAuthenticated = function() {
     return auth.$getAuth() ? true : false;
@@ -13,16 +19,15 @@ app.factory('authService', function($location, $firebaseAuth, config) {
 
   authService.login = function(loginUser) {
     auth.$authWithPassword({
-        email: loginUser.email,
-        password: loginUser.password
+      email: loginUser.email,
+      password: loginUser.password
     }).then(function(authData) {
       ref.child('users/' + authData.uid).once('value', function(userSnapshot) {
         currentUser = userSnapshot.val();
+        $location.path('/userProfile');
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
-
-      $location.path('/userProfile');
     }).catch(function(error) {
       console.error("Error: ", error);
     });;

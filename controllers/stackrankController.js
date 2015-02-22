@@ -13,4 +13,8 @@ app.controller('StackrankController', function($scope, $firebase, config, authSe
     var newUserExperience = new UserExperience(newRatingExperience);
     userExperiences.child(experience.$id).set(newUserExperience);
   };
+
+  $scope.isAuthenticated = function() {
+    return authService.isAuthenticated();
+  };
 });

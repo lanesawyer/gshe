@@ -10,7 +10,7 @@
         <div class="md-tile-content">
           <h3>{{experience.display}}</h3>
           <h4>{{experience.rating}}</h4>
-          <span ng-click="markAsExperienced(experience)">Mark as experienced</span>
+          <span ng-show="isAuthenticated()" ng-click="markAsExperienced(experience)">Mark as experienced</span>
         </div>
       </md-item-content>
     </md-item>
