@@ -1,5 +1,13 @@
 <div ng-controller="AdminController">
-
+  <h1>Admin</h1>
+  <form class="form-inline" role="form" ng-submit="addExperience(experienceDisplay)">
+    <div class="form-group">
+      <label class="sr-only" for="experienceDisplay">Experience</label>
+      <input type="text" class="form-control" placeholder="Experience" ng-model="experienceDisplay" />
+    </div>
+    
+    <input type="submit" class="btn btn-success" value="Add experience"/>
+  </form>
   <table class="table">
     <thead>
       <tr>
@@ -38,13 +46,4 @@
       </tr>
     </tbody>
   </table>
-
-  <form class="form-inline" role="form" ng-submit="addExperience(experienceDisplay)">
-    <div class="form-group">
-      <label class="sr-only" for="experienceDisplay">Experience</label>
-      <input type="text" class="form-control" placeholder="Experience" ng-model="experienceDisplay" />
-    </div>
-    
-    <input type="submit" class="btn btn-success" value="Add experience"/>
-  </form>
 </div>

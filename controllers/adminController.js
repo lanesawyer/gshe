@@ -10,7 +10,7 @@ app.controller('AdminController', function($scope, $firebase, glickoService, con
 
     $scope.experiences.$add(newExperience);
 
-    $scope.experience = '';
+    $scope.experienceDisplay = '';
   };
 
   $scope.saveExperience = function(experience) {
