@@ -57,7 +57,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
 
   $scope.updateProfile = function(user) {
     var ref = new Firebase(config.firebase_url);
-    ref.child('users/' + user.authData.uid).update(user);
+    ref.child('users/' + $scope.user.authData.uid).update(user);
   };
 
   $scope.genderOptions = [
@@ -93,8 +93,8 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
     'Some college credit, no degree',
     'Trade/technical/vocational training',
     'Associate degree',
-    'Bachelor’s degree',
-    'Master’s degree',
+    'Bachelors degree',
+    'Masters degree',
     'Professional degree',
     'Doctorate degree'
   ];

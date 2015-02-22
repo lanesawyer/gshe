@@ -4,6 +4,8 @@ app.factory('authService', function($location, $firebaseAuth, config) {
   var ref = new Firebase(config.firebase_url);
   var auth = $firebaseAuth(ref);
 
+  var currentUser;
+
   var authData = auth.$getAuth()
   if(authData) {
     ref.child('users/' + authData.uid).once('value', function(userSnapshot) {

@@ -8,48 +8,48 @@
     <md-input-container>
       <label>First Name</label>
       <input required name="firstName" ng-model="user.firstName" />
-      <div ng-messages="loginForm.email.$error">
+      <div ng-messages="loginForm.firstName.$error">
         <div ng-message="required">This is required.</div>
       </div>
     </md-input-container>
     <md-input-container>
       <label>Last Name</label>
       <input required name="lastName" ng-model="user.lastName" />
-      <div ng-messages="loginForm.email.$error">
+      <div ng-messages="loginForm.lastName.$error">
         <div ng-message="required">This is required.</div>
       </div>
     </md-input-container>
-    Gender
+    <div>Gender</div>
     <md-radio-group ng-model="user.gender">
-        <md-radio-button ng-repeat="age in genderOptions" ng-value="age" aria-label="{{ age }}">
-            {{ age }}
+        <md-radio-button ng-repeat="gender in genderOptions" ng-value="gender" aria-label="{{ gender }}">
+            {{ gender }}
         </md-radio-button>
     </md-radio-group>
     <br />
-    Age
-    <select ng-model="user.age">
-      <option ng-repeat="age in ageOptions" value="{{age}}">{{age}}</option>
-    </select>
+    <label>Age</label>
+    <md-select ng-model="user.age" placeholder="Age">
+      <md-option ng-value="age" ng-repeat="age in ageOptions">{{ age }}</md-option>
+    </md-select>
     <br />
-    Ethnicity
-    <select ng-model="user.ethnicity">
-      <option ng-repeat="ethnicity in ethnicityOptions" value="{{ethnicity}}">{{ethnicity}}</option>
-    </select>
+    <label>Ethnicity</label>
+    <md-select ng-model="user.ethnicity" placeholder="Ethnicity">
+      <md-option ng-value="ethnicity" ng-repeat="ethnicity in ethnicityOptions">{{ ethnicity }}</md-option>
+    </md-select>
     <br />
-    Education
-    <select ng-model="user.education">
-      <option ng-repeat="education in eduationOptions" value="{{education}}">{{education}}</option>
-    </select>
+    <label>Education</label>
+    <md-select ng-model="user.education" placeholder="Education">
+      <md-option ng-value="education" ng-repeat="education in eduationOptions">{{ education }}</md-option>
+    </md-select>
     <br />
-    Marital Status
-    <select ng-model="user.maritalStatus">
-      <option ng-repeat="maritalStatus in maritalStatusOptions" value="{{maritalStatus}}">{{maritalStatus}}</option>
-    </select>
+    <label>Marital Status</label>
+    <md-select ng-model="user.maritalStatus" placeholder="Marital Status">
+      <md-option ng-value="maritalStatus" ng-repeat="maritalStatus in maritalStatusOptions">{{ maritalStatus }}</md-option>
+    </md-select>
     <br />
-    Employment Status
-    <select ng-model="user.employmentStatus">
-      <option ng-repeat="employmentStatus in employmentStatusOptions" value="{{employmentStatus}}">{{employmentStatus}}</option>
-    </select>
+    <label>Employment Status</label>
+    <md-select ng-model="user.employmentStatus" placeholder="Employment Status">
+      <md-option ng-value="employmentStatus" ng-repeat="employmentStatus in employmentStatusOptions">{{ employmentStatus }}</md-option>
+    </md-select>
     <md-button class="md-raised md-primary" ng-click="updateProfile(user)">Update Profile</md-button>
   </form>
 </md-content>
