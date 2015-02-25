@@ -1,6 +1,10 @@
 {
   "firebase": "gshe",
   "public": ".",
+  "rewrites": [{
+    "source": "**",
+    "destination": "/index.html"
+  }],
   "ignore": [
     "firebase.json",
     "**/.*",
