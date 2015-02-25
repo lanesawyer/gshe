@@ -1,4 +1,4 @@
-app.factory('authService', function($location, $route, $firebaseAuth, config) {
+app.factory('authService', function($rootScope, $location, $route, $firebaseAuth, config) {
   var authService = {};
   
   var ref = new Firebase(config.firebase_url);
@@ -32,6 +32,7 @@ app.factory('authService', function($location, $route, $firebaseAuth, config) {
       ref.child('users/' + authData.uid).once('value', function(userSnapshot) {
         currentUser = userSnapshot.val();
         $location.path('/userProfile');
+        $rootScope.$apply();
       }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
       });
@@ -42,6 +43,7 @@ app.factory('authService', function($location, $route, $firebaseAuth, config) {
 
   authService.logout = function() {
     auth.$unauth();
+    currentUser = null;
     $location.path('/');
   };
 
