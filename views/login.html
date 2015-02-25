@@ -1,27 +1,29 @@
-<div layout-margin layout="column" ng-controller="UserController">
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span class="md-flex">Sign In</span>
-    </div>
-  </md-toolbar>
-  <md-content class="md-padding">
-    <form name="loginForm">
-      <md-input-container>
-        <label>Email</label>
-        <input type="email" required name="email" ng-model="loginUser.email" />
-        <div ng-messages="loginForm.email.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
-      <md-input-container>
-        <label>Password</label>
-        <input type="password" required name="password" ng-model="loginUser.password" />
-        <div ng-messages="loginForm.password.$error">
-          <div ng-message="required">This is required.</div>
-        </div>
-      </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="login(loginUser)">Sign In</md-button>
-      <a href="#/resetPassword">Forgot your password?</a>
-    </form>
-  </md-content>
+<div layout="row" layout-margin layout-align="center center" ng-controller="UserController">
+  <div flex flex-md="66" flex-gt-sm="50">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="md-flex">Sign In</span>
+      </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+      <form name="loginForm">
+        <md-input-container>
+          <label>Email</label>
+          <input type="email" required name="email" ng-model="loginUser.email" />
+          <div ng-messages="loginForm.email.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container>
+          <label>Password</label>
+          <input type="password" required name="password" ng-model="loginUser.password" />
+          <div ng-messages="loginForm.password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="login(loginUser)">Sign In</md-button>
+        <a href="#/resetPassword">Forgot your password?</a>
+      </form>
+    </md-content>
+  </div>
 </div>
