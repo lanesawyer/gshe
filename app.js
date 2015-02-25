@@ -1,6 +1,6 @@
 var app = angular.module('gShe', ['ngRoute', 'ngMessages', 'ngMaterial', 'firebase']);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/admin', {
     templateUrl: 'views/admin.html',
     controller: 'AdminController'
@@ -23,7 +23,9 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'views/experiences.html',
     controller: 'ExperienceController'
   });
-}]);
+
+  $locationProvider.html5Mode(true);
+});
 
 app.constant('config', {
   'firebase_url': 'https://gshe.firebaseio.com/',
