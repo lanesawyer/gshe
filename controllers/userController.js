@@ -68,7 +68,7 @@ app.controller('UserController', function($scope, $location, $firebase, config, 
   };
 
   $scope.genderOptions = [
-    'Male', 'Female', 'Other'
+    'Female', 'Male', 'Other'
   ];
 
   $scope.ageOptions = [
