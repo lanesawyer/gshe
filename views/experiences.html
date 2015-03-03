@@ -1,38 +1,42 @@
-<div layout-margin ng-controller="ExperienceController">
-
-  <div ng-hide="allExperiencesAnswered">
-    <div class="experience" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <span class="md-flex">Have you experienced...</span>
-        </div>
-      </md-toolbar>
-      <md-content class="md-padding" layout="column">
-        <h1>{{ experience.display }}</h1>
-        <md-button class="md-primary" ng-click="hadExperience(experience)">Yes</md-button>
-        <md-button ng-click="notHadExperience(experience)">No</md-button>
-      </md-content>
-    </div>
+<div layout="row" layout-sm="column" layout-margin layout-align="center top" ng-controller="ExperienceController">
+  <div flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="md-flex">Personal Stackrank</span>
+      </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+      Personal stackrank goes here
+    </md-content>
   </div>
-
-  <div ng-show="allExperiencesAnswered">
-    <div class="experience-vote" layout="column">
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <span class="md-flex">Which experience do you prefer?</span>
-        </div>
-      </md-toolbar>
-      <md-content layout="row" layout-sm="column" flex ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
-        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 0)">
-          <span>{{ experiencePair.experience1.display }}</span>
-        </md-whiteframe>
-        <div flex="20" flex-sm>
-          <span>Or</span>
-        </div>
-        <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 1)">
-          <span>{{ experiencePair.experience2.display }}</span>
-        </md-whiteframe>
-      </md-content>
-    </div>
+  <div flex ng-hide="allExperiencesAnswered">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="md-flex">Have you experienced...</span>
+      </div>
+    </md-toolbar>
+    <md-content class="md-padding" layout="column" ng-repeat="experience in experiences" ng-show="$index == experienceCounter">
+      <h1>{{ experience.display }}</h1>
+      <md-button class="md-primary" ng-click="hadExperience(experience)">Yes</md-button>
+      <md-button ng-click="notHadExperience(experience)">No</md-button>
+    </md-content>
+  </div>
+  <div flex ng-show="allExperiencesAnswered">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="md-flex">Which experience do you prefer?</span>
+      </div>
+    </md-toolbar>
+    <md-content layout="row" layout-sm="column" flex ng-repeat="experiencePair in experiencePairs" ng-show="$index == experiencePairCounter">
+      <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 0)">
+        <span>{{ experiencePair.experience1.display }}</span>
+      </md-whiteframe>
+      <div flex="20" flex-sm>
+        <span>Or</span>
+      </div>
+      <md-whiteframe flex="40" flex-sm class="md-whiteframe-z1" ng-click="nextExperiencePair(experiencePair, 1)">
+        <span>{{ experiencePair.experience2.display }}</span>
+      </md-whiteframe>
+    </md-content>
   </div>
 </div>

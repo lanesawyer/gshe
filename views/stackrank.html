@@ -1,18 +1,27 @@
-<md-content>
-  <md-button class="md-raised">Best Experiences</md-button>
-  <md-button class="md-raised">Worst Experiences</md-button>
-  <md-list>
-    <md-item ng-repeat="experience in stackrank">
-      <md-item-content>
-        <div class="md-tile-left">
-          Rank
-        </div>
-        <div class="md-tile-content">
-          <h3>{{experience.display}}</h3>
-          <h4>{{experience.rating}}</h4>
-          <span ng-show="isAuthenticated()" ng-click="markAsExperienced(experience)">Mark as experienced</span>
-        </div>
-      </md-item-content>
-    </md-item>
-  </md-list>
-</md-content>
+<div layout="row" layout-margin layout-align="center top" ng-controller="UserController">
+  <div flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="md-flex">Pesonal Stackrank</span>
+      </div>
+    </md-toolbar>
+    <md-content class="md-padding">
+      <md-button class="md-raised">Best Experiences</md-button>
+      <md-button class="md-raised">Worst Experiences</md-button>
+      <md-list>
+        <md-item ng-repeat="experience in stackrank">
+          <md-item-content>
+            <div class="md-tile-left">
+              Rank
+            </div>
+            <div class="md-tile-content">
+              <h3>{{experience.display}}</h3>
+              <h4>{{experience.rating}}</h4>
+              <span ng-show="isAuthenticated()" ng-click="markAsExperienced(experience)">Mark as experienced</span>
+            </div>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-content>
+  </div>
+</div>
