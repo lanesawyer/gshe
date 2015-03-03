@@ -1,6 +1,16 @@
 app.controller('UserExperienceController', function($scope, $firebase, authService, glickoService, config) {
   var ref = new Firebase(config.firebase_url + 'user-experiences/');
 
+  $scope.$watch(authService.getCurrentUser, function (currentUser) {
+    if(currentUser) {
+      $scope.user = new User(currentUser);
+
+      var userExperiences = new Firebase(config.firebase_url + 'user-experiences/' + authService.getAuth().uid);
+      var sync = $firebase(userExperiences);
+      $scope.userExperiences = sync.$asArray();
+    }
+  });
+
   $scope.addUserExperience = function(experience) {
     var userId = authService.getAuth().uid;
 

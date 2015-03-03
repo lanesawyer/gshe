@@ -1,13 +1,15 @@
 <div layout="row" layout-sm="column" layout-margin layout-align="center top" ng-controller="ExperienceController">
-  <div flex>
+  <div flex ng-controller="UserExperienceController">
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <span class="md-flex">Personal Stackrank</span>
+        <span class="md-flex">My Experiences</span>
       </div>
     </md-toolbar>
     <md-content class="md-padding">
-      Personal stackrank goes here
-    </md-content>
+      <div ng-repeat="userExperience in userExperiences | orderBy:'rating'">
+        {{userExperience.display}} | {{userExperience.rating}}
+        <span ng-click="removeUserExperience(userExperience)">Remove</span>
+      </div>
   </div>
   <div flex ng-hide="allExperiencesAnswered">
     <md-toolbar>
