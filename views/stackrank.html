@@ -1,15 +1,20 @@
-<div layout="row" layout-margin layout-align="center top" ng-controller="UserController">
+<div layout="row" layout-margin ng-controller="StackrankController">
   <div flex>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <span class="md-flex">Pesonal Stackrank</span>
+        <span class="md-flex">Global Stackrank</span>
       </div>
     </md-toolbar>
     <md-content class="md-padding">
-      <md-button class="md-raised">Best Experiences</md-button>
-      <md-button class="md-raised">Worst Experiences</md-button>
+      <div layout="row" layout-align="start center">
+        <md-input-container>
+          <label>Search</label>
+          <input ng-model="searchString">
+        </md-input-container>
+      </div>
+
       <md-list>
-        <md-item ng-repeat="experience in stackrank">
+        <md-item ng-repeat="experience in stackrank | orderBy: experience.rating | filter: { display: searchString }">
           <md-item-content>
             <div class="md-tile-left">
               Rank
