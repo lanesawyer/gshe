@@ -62,6 +62,7 @@ app.factory('authService', function($rootScope, $location, $route, $firebaseAuth
         lastName: newUserInfo.lastName,
       });
       $location.path('/userProfile');
+      $rootScope.$apply();
     }).catch(function(error) {
       console.error("Error: ", error);
     });
