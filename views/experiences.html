@@ -6,11 +6,23 @@
       </div>
     </md-toolbar>
     <md-content class="md-padding">
-      <div ng-repeat="userExperience in userExperiences | orderBy:'rating'">
-        {{userExperience.display}} | {{userExperience.rating}}
-        <span ng-click="removeUserExperience(userExperience)">Remove</span>
-      </div>
+      <table class="table">
+        <thead>
+          <th>Experience</th>
+          <th>Ranking</th>
+          <th># Times Compared</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="userExperience in userExperiences | orderBy: 'rating'">
+            <td>{{userExperience.display}}</td> 
+            <td>{{userExperience.rating}}</td>
+            <td>{{userExperience.timesWon + userExperience.timesLost}}</td>
+            <td><md-button ng-click="removeUserExperience(userExperience)">Remove</md-button></td>
+          </tr>
+      </tbody>
+      </table>
   </div>
+
   <div flex ng-hide="allExperiencesAnswered">
     <md-toolbar>
       <div class="md-toolbar-tools">
