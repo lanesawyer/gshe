@@ -13,7 +13,7 @@
           <th># Times Compared</th>
         </thead>
         <tbody>
-          <tr ng-repeat="userExperience in userExperiences | orderBy: 'rating'">
+          <tr ng-repeat="userExperience in userExperiences | orderBy: 'rating'" ng-hide="userExperience.archived">
             <td>{{userExperience.display}}</td> 
             <td>{{userExperience.rating}}</td>
             <td>{{userExperience.timesWon + userExperience.timesLost}}</td>

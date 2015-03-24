@@ -1,5 +1,7 @@
-app.controller('UserExperienceController', function($scope, $firebase, authService, glickoService, config) {
+app.controller('UserExperienceController', function($scope, $firebase, authService, userExperienceService, glickoService, config) {
   var ref = new Firebase(config.firebase_url + 'user-experiences/');
+
+  $scope.experiences = userExperienceService.getExperiencesBatch();
 
   $scope.$watch(authService.getCurrentUser, function (currentUser) {
     if(currentUser) {

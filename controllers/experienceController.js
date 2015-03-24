@@ -4,7 +4,7 @@ function ExperiencePair(experience1, experience2) {
   this.winner = 0.5;
 };
 
-app.controller('ExperienceController', function($scope, $firebase, glickoService, config) {
+app.controller('ExperienceController', function($scope, $firebase, userExperienceService, glickoService, config) {
   var ref = new Firebase(config.firebase_url + config.experiences_url);
   var sync = $firebase(ref);
 
